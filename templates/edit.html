@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier le docker-compose</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .editor-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        textarea {
+            width: 100%;
+            height: 400px;
+            font-family: monospace;
+            font-size: 14px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: vertical;
+        }
+
+        .editor-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .editor-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        .btn-save {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="editor-container">
+        <h2>Modifier le docker-compose de <code>{{ project_name }}</code></h2>
+        <form id="edit-form" method="POST" action="{{ url_for('save_compose', project_name=project_name) }}">
+            <textarea name="compose_content">{{ compose_content }}</textarea>
+<div class="editor-actions">
+    <a href="{{ url_for('index') }}" class="btn-cancel">Annuler</a>
+    <button type="submit" class="btn-save">Enregistrer</button>
+</div>
+
+        </form>
+    </div>
+    <script>
+    const form = document.getElementById("edit-form");
+    form.addEventListener("submit", () => {
+        sessionStorage.setItem("reopenProject", "{{ project_name }}");
+    });
+
+    const cancelBtn = document.querySelector(".btn-cancel");
+    cancelBtn.addEventListener("click", (e) => {
+        e.preventDefault(); // empêche la redirection immédiate
+        sessionStorage.setItem("reopenProject", "{{ project_name }}");
+        window.location.href = cancelBtn.href;
+    });
+    </script>
+	
+</body>
+</html>
+

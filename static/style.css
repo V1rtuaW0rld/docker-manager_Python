@@ -1,0 +1,234 @@
+	.project-logo {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		width: 50px;
+		height: 50px;
+		object-fit: contain;
+		z-index: 10; /* Assure que le logo reste au-dessus */
+	}
+
+	.project-actions {
+		display: flex;
+		justify-content: flex-end; /* Aligne les boutons à gauche */
+		gap: 2px;
+		margin-top: 5px;
+	}
+
+	.action-icon {
+		width: 24px;
+		height: 24px;
+		cursor: pointer;
+	}
+
+	.edit-btn, .logs-btn, .console-btn {
+		background: none;
+		border: none;
+		padding: 5px;
+	}
+
+	.edit-btn:hover, .logs-btn:hover, .console-btn:hover {
+		opacity: 0.8;
+	}
+
+	#log-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.05);
+		display: none; /* Masqué au départ */
+		justify-content: center;
+		align-items: center;
+		backdrop-filter: blur(10px);
+		z-index: 100;
+	}
+	.log-container {
+		width: 80%;
+		max-height: 70vh;
+		background: white;
+		border-radius: 10px;
+		padding: 20px;
+		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+		overflow-y: auto;
+		position: relative;
+		text-align: left;
+	}
+	.log-header {
+		position: sticky;
+		top: 0;
+		background: rgba(255, 255, 255, 0.95);
+		padding: 10px;
+		font-size: 18px;
+		font-weight: bold;
+		display: flex;
+		justify-content: space-between; /* Titre au centre, croix à droite */
+		align-items: center;
+		border-bottom: 1px solid #ccc;
+		z-index: 10;
+	}
+
+	#log-title {
+		flex-grow: 1;
+		text-align: center; /* Centrage parfait du nom */
+	}
+
+	.close-btn {
+		background: none;
+		border: none;
+		font-size: 20px;
+		cursor: pointer;
+		color: #7f8c8d;
+	}
+
+	.close-btn:hover {
+		color: #e74c3c;
+	}
+
+	#compose-content {
+		background: #fafafa;
+		padding: 20px;
+		font-family: monospace;
+		white-space: pre-wrap;
+		word-break: break-word;
+		overflow-y: auto;
+		font-size: 0.9em;
+		line-height: 1.5;
+		flex-grow: 1;
+	}
+
+	#compose-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.05);
+		display: none;
+		justify-content: center;
+		align-items: center;
+		backdrop-filter: blur(10px);
+		z-index: 100;
+	}
+
+	.compose-container {
+		background: #fff;
+		border-radius: 12px;
+		width: 80vw;
+		max-width: 900px;
+		max-height: 80vh;
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+	}
+
+	.compose-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 12px 20px;
+		border-bottom: 1px solid #e0e0e0;
+		background-color: #f5f6fa;
+	}
+
+
+	#compose-title {
+		font-size: 1.2em;
+		font-weight: bold;
+		color: #2c3e50;
+		flex-grow: 1;
+		text-align: center;
+	}
+
+	.edit-icon {
+		width: 24px;
+		height: 24px;
+		cursor: pointer;
+		transition: transform 0.2s ease, filter 0.2s ease;
+		filter: grayscale(40%);
+		margin-right: 10px;
+	}
+
+	.edit-icon:hover {
+		filter: none;
+		transform: scale(1.1);
+	}
+
+	.btn-cancel {
+		background-color: #3498db;
+		color: white;
+		padding: 10px 20px;
+		border: none;
+		border-radius: 6px;
+		font-weight: bold;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+
+	.btn-cancel:hover {
+		background-color: #2980b9;
+	}
+
+.console-dropdown {
+    position: relative; /* ⬅️ crée le contexte pour positionner le menu */
+}
+
+.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    position: absolute;
+    z-index: 9999;
+    min-width: 120px;
+    top: 100%;
+    right: 100%;
+    transform: translateX(-10px);
+}
+
+
+
+	.dropdown-menu.hidden {
+	  display: none;
+	}
+
+	.dropdown-item {
+	  padding: 5px 12px;
+	  cursor: pointer;
+	  white-space: nowrap;
+	  font-size: 14px;
+	}
+
+	.dropdown-item:hover {
+	  background: #f0f0f0;
+	}
+	.hover-group {
+		position: relative;
+		display: inline-block;
+	}
+	
+	.hover-group:hover .dropdown-menu {
+		display: block;
+	}
+	
+.project-card {
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+
+.projects-grid {
+  display: grid;
+  gap: 20px;
+  position: relative;
+  overflow: visible;
+  z-index: 0;
+}
+
